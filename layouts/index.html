@@ -1,0 +1,80 @@
+{{ define "main" }}
+<section class="hero">
+    <p class="hero-eyebrow">{{ .Site.Params.eyebrow }}</p>
+    <h1 class="hero-name">{{ .Site.Params.author }}</h1>
+    <p class="hero-intro">{{ .Site.Params.intro | markdownify }}</p>
+</section>
+
+<div class="divider">
+    <div class="divider-line"></div>
+</div>
+
+<section id="news">
+    <div class="section-header">
+        <p class="section-label">News</p>
+        <a href="/news/" class="section-link">All Updates →</a>
+    </div>
+    <div class="news-list">
+        {{ range first 5 (where .Site.RegularPages "Section" "news") }}
+        <div class="news-item">
+            <span class="news-date">{{ .Date.Format "Jan 2006" }}</span>
+            <div class="news-text">{{ .Content }}</div>
+        </div>
+        {{ end }}
+    </div>
+</section>
+
+<div class="divider">
+    <div class="divider-line"></div>
+</div>
+
+<section id="portfolio">
+    <div class="section-header">
+        <p class="section-label">Selected Work</p>
+        <a href="/portfolio/" class="section-link">View Archive →</a>
+    </div>
+    <div class="portfolio-list">
+        {{ range first 4 (where .Site.RegularPages "Section" "portfolio") }}
+        <a href="{{ .Permalink }}" class="portfolio-item">
+            <div class="portfolio-content">
+                <h3>{{ .Title }}</h3>
+                <p>{{ .Params.description }}</p>
+            </div>
+            <div class="portfolio-meta">
+                <div class="portfolio-year">{{ .Params.year }}</div>
+                <div class="portfolio-tag">{{ .Params.tag }}</div>
+            </div>
+        </a>
+        {{ end }}
+    </div>
+</section>
+
+<div class="divider">
+    <div class="divider-line"></div>
+</div>
+
+<section id="publications">
+    <div class="section-header">
+        <p class="section-label">Recent Publications</p>
+        <a href="/publications/" class="section-link">All Publications →</a>
+    </div>
+    <div class="publications-list">
+        {{ range first 3 (where .Site.RegularPages "Section" "publications") }}
+        <article class="publication-item">
+            <div class="publication-header">
+                <h3 class="publication-title">{{ .Title }}</h3>
+                <span class="publication-year">{{ .Date.Format "2006" }}</span>
+            </div>
+            <p class="publication-venue">{{ .Params.venue }}</p>
+            <div class="publication-links">
+                {{ with .Params.arxiv }}<a href="{{ . }}" class="publication-link">arXiv</a>{{ end }}
+                {{ with .Params.paper_pdf }}<a href="{{ . }}" class="publication-link">PDF</a>{{ end }}
+                {{ with .Params.code }}<a href="{{ . }}" class="publication-link">Code</a>{{ end }}
+                {{ with .Params.cvf }}<a href="{{ . }}" class="publication-link">CVF</a>{{ end }}
+                {{ with .Params.ieee }}<a href="{{ . }}" class="publication-link">IEEE</a>{{ end }}
+            </div>
+        </article>
+        {{ end }}
+    </div>
+</section>
+{{ end }}

@@ -1,0 +1,15 @@
+{{ define "main" }}
+<section class="page-content">
+    {{ if eq .Section "portfolio" }}
+    <p class="blog-date">{{ .Params.year }} · {{ .Params.tag }}</p>
+    {{ else if eq .Section "blog" }}
+    <p class="blog-date">{{ .Date.Format "January 2, 2006" }}</p>
+    {{ end }}
+    
+    <h1 class="page-title">{{ .Title }}</h1>
+    
+    <div class="page-body">
+        {{ .Content }}
+    </div>
+</section>
+{{ end }}

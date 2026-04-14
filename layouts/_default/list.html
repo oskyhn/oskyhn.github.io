@@ -1,0 +1,70 @@
+{{ define "main" }}
+<section class="page-content">
+    <h1 class="page-title">{{ .Title }}</h1>
+    
+    {{ if eq .Section "portfolio" }}
+    <div class="portfolio-list">
+        {{ range .Pages }}
+        <a href="{{ .Permalink }}" class="portfolio-item">
+            <div class="portfolio-content">
+                <h3>{{ .Title }}</h3>
+                <p>{{ .Params.description }}</p>
+            </div>
+            <div class="portfolio-meta">
+                <div class="portfolio-year">{{ .Params.year }}</div>
+                <div class="portfolio-tag">{{ .Params.tag }}</div>
+            </div>
+        </a>
+        {{ end }}
+    </div>
+    
+    {{ else if eq .Section "blog" }}
+    <div class="blog-list">
+        {{ range .Pages }}
+        <a href="{{ .Permalink }}" class="blog-item">
+            <p class="blog-date">{{ .Date.Format "January 2006" }}</p>
+            <h3 class="blog-title">{{ .Title }}</h3>
+            <p class="blog-excerpt">{{ .Params.excerpt }}</p>
+        </a>
+        {{ end }}
+    </div>
+    
+    {{ else if eq .Section "news" }}
+    <div class="news-list">
+        {{ range .Pages }}
+        <div class="news-item">
+            <span class="news-date">{{ .Date.Format "Jan 2006" }}</span>
+            <div class="news-text">{{ .Content }}</div>
+        </div>
+        {{ end }}
+    </div>
+
+    {{ else if eq .Section "publications" }}
+    <div class="publications-list">
+        {{ range .Pages }}
+        <article class="publication-item">
+            <div class="publication-header">
+                <h3 class="publication-title">{{ .Title }}</h3>
+                <span class="publication-year">{{ .Date.Format "2006" }}</span>
+            </div>
+            <p class="publication-authors">{{ .Params.authors }}</p>
+            <p class="publication-venue">{{ .Params.venue }}</p>
+            <div class="publication-links">
+                {{ with .Params.arxiv }}<a href="{{ . }}" class="publication-link">arXiv</a>{{ end }}
+                {{ with .Params.paper_pdf }}<a href="{{ . }}" class="publication-link">PDF</a>{{ end }}
+                {{ with .Params.code }}<a href="{{ . }}" class="publication-link">Code</a>{{ end }}
+                {{ with .Params.cvf }}<a href="{{ . }}" class="publication-link">CVF</a>{{ end }}
+                {{ with .Params.ieee }}<a href="{{ . }}" class="publication-link">IEEE</a>{{ end }}
+                {{ with .Params.springer }}<a href="{{ . }}" class="publication-link">Springer</a>{{ end }}
+            </div>
+        </article>
+        {{ end }}
+    </div>
+
+    {{ else }}
+    <div class="page-body">
+        {{ .Content }}
+    </div>
+    {{ end }}
+</section>
+{{ end }}

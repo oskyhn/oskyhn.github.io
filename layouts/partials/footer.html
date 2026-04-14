@@ -1,0 +1,11 @@
+<footer>
+    <div class="footer-content">
+        <div class="footer-links">
+            {{ with .Site.Params.github }}<a href="{{ . }}">GitHub</a>{{ end }}
+            {{ with .Site.Params.linkedin }}<a href="{{ . }}">LinkedIn</a>{{ end }}
+            {{ with .Site.Params.scholar }}<a href="{{ . }}">Google Scholar</a>{{ end }}
+            {{ with .Site.Params.email }}<a href="mailto:{{ . }}">Contact</a>{{ end }}
+        </div>
+        <span class="footer-mark">© {{ now.Year }}</span>
+    </div>
+</footer>

@@ -1,0 +1,42 @@
+# Hugo
+public/
+resources/_gen/
+.hugo_build.lock
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Temp
+*.log
+*.tmp
+
+# Dependencies
+node_modules/
+
+# Environment & secrets
+.env
+.env.*
+*.env
+secrets.*
+credentials.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Claude Code
+.claude/
+.clauderc
+.claude_code/
+*.claude_history
+CLAUDE.md
+.mcp.json
+mcp.json

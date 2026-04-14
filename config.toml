@@ -1,0 +1,48 @@
+baseURL = "https://oskyhn.github.io/"
+languageCode = "en-us"
+title = "oskyhn — AI Research & Engineering"
+buildFuture = true
+
+[params]
+  author = "Osman Semih"
+  description = "AI Researcher & Engineer working at the intersection of computer vision and language models."
+  eyebrow = "AI Research & Engineering"
+  intro = "Building AI systems at the intersection of *computer vision* and *language models*, translating research into practical healthcare solutions that improve clinical decision-making and patient care."
+  
+  # Social links
+  github = "https://github.com/oskyhn"
+  linkedin = "https://www.linkedin.com/in/osman-semih-kayhan/"
+  scholar = "https://scholar.google.com.tr/citations?user=IQd5igMAAAAJ&hl=en"
+  email = ""
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Portfolio"
+    url = "/portfolio/"
+    weight = 2
+  [[menu.main]]
+    name = "News"
+    url = "/news/"
+    weight = 4
+  [[menu.main]]
+    name = "Publications"
+    url = "/publications/"
+    weight = 5
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 6
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ["HTML"]
+  section = ["HTML"]
+  page = ["HTML"]
